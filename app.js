@@ -161,7 +161,8 @@ app.get(`/metrics/${endpoints[11]}`, async (req, res) => {
         let data = prom.data;
         res.send(data);
     } catch (error) {
-        res.status(500).end(error);
+        console.log(error);
+        //res.status(500).end(error);
     }
 })
 
