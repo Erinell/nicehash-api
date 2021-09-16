@@ -161,7 +161,7 @@ class NiceHashClient {
   }
 
   getActiveWorkers() {
-    return this.getUnsignedRequestPromise('GET', '/exchange/api/v2/mining/rigs/activeWorkers', {});
+    return this.getUnsignedRequestPromise('GET', '/main/api/v2/mining/rigs/activeWorkers', {});
   }
 
 }
