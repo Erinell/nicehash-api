@@ -25,7 +25,8 @@ const endpoints = [
     'exchangerate',
     'miningAddress',
     'marketStats',
-    'trades'
+    'trades',
+    'activeworkers'
 ]
 
 app.get('/', (req, res) => {
@@ -147,6 +148,16 @@ app.get(`/metrics/${endpoints[10]}`, async (req, res) => {
     try {
         const market = 'BTCEURS'; //req.params.market;
         let prom = await nhClient.getTrades(market);
+        let data = prom.data;
+        res.send(data);
+    } catch (error) {
+        res.status(500).end(error);
+    }
+})
+
+app.get(`/metrics/${endpoints[11]}`, async (req, res) => {
+    try {
+        let prom = await nhClient.getActiveWorkers();
         let data = prom.data;
         res.send(data);
     } catch (error) {

@@ -159,6 +159,11 @@ class NiceHashClient {
     }
     return this.getUnsignedRequestPromise('GET', '/exchange/api/v2/info/trades', params);
   }
+
+  getActiveWorkers() {
+    return this.getUnsignedRequestPromise('GET', '/exchange/api/v2/mining/rigs/activeWorkers', {});
+  }
+
 }
 
 module.exports = NiceHashClient;
