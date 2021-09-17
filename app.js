@@ -26,7 +26,8 @@ const endpoints = [
     'miningAddress',
     'marketStats',
     'trades',
-    'activeworkers'
+    'activeworkers',
+    'algostats'
 ]
 
 app.get('/', (req, res) => {
@@ -161,11 +162,21 @@ app.get(`/metrics/${endpoints[11]}`, async (req, res) => {
         let data = prom.data;
         res.send(data);
     } catch (error) {
-        console.log(error);
-        //res.status(500).end(error);
+        //console.log(error);
+        res.status(500).end(error);
     }
 })
 
+app.get(`/metrics/${endpoints[12]}`, async (req, res) => {
+    try {
+        let prom = await nhClient.getAlgoStats();
+        let data = prom.data;
+        res.send(data);
+    } catch (error) {
+        //console.log(error);
+        res.status(500).end(error);
+    }
+})
 app.listen(port, () => {
     console.log(`server start http://localhost:${port}`)
 })

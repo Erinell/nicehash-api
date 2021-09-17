@@ -161,9 +161,12 @@ class NiceHashClient {
   }
 
   getActiveWorkers() {
-    return this.getUnsignedRequestPromise('GET', '/main/api/v2/mining/rigs/activeWorkers', {});
+    return this.getRequestPromise('GET', '/main/api/v2/mining/rigs/activeWorkers', {})
   }
 
+  getAlgoStats() {
+    return this.getRequestPromise('GET', '/main/api/v2/mining/algo/stats', {})
+  }
 }
 
 module.exports = NiceHashClient;
